@@ -12,6 +12,7 @@
     "react-addons-transition-group": "^15.6.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "reactjs-popup": "^1.5.0",
     "reactstrap": "^8.4.1",
     "supports-color": "^7.1.0"
   },
