@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Popup from "reactjs-popup";
+import axios from "axios";
 
 class RegisterPopup extends Component {
     state = {
@@ -18,6 +19,20 @@ class RegisterPopup extends Component {
     appClick = () => {
         if (this.state.password !== this.state.passwordcheck) {
             alert(`패스워드를 확인하세요.`)
+        } else {
+
+            axios.post('', {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password
+            })
+            .then(function (response){
+                console.log(response)
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+            
         }
     }
 
@@ -38,7 +53,7 @@ class RegisterPopup extends Component {
                     <input placeholder="Email" name="email" value={email} onChange={appChange}></input>
                     <input type="password" placeholder="Password" name="password" value={password} onChange={appChange}></input>
                     <input type="password" placeholder="Password Check" name="passwordcheck" value={passwordcheck} onChange={appChange}
-                    onKeyPress={appKeyPress}></input>
+                        onKeyPress={appKeyPress}></input>
                     <button onClick={appClick}>register</button>
                 </div>
             </Popup>
