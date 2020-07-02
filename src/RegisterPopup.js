@@ -21,7 +21,7 @@ class RegisterPopup extends Component {
             alert(`패스워드를 확인하세요.`)
         } else {
 
-            axios.post('http://49.50.174.81:7777/server/SignUp', {
+            axios.post('http://49.50.174.81:7777/server/SignUp/', {
                 name: this.state.name,
                 email: this.state.email,
                 password: this.state.password
