@@ -21,7 +21,7 @@ class RegisterPopup extends Component {
             alert(`패스워드를 확인하세요.`)
         } else {
 
-            axios.post('', {
+            axios.post('http://49.50.174.81:7777/server/SignUp', {
                 name: this.state.name,
                 email: this.state.email,
                 password: this.state.password
@@ -46,6 +46,7 @@ class RegisterPopup extends Component {
 
         const { name, email, password, passwordcheck } = this.state;
         const { appChange, appClick, appKeyPress } = this;
+
         return (
             <Popup trigger={<button>register</button>} position="right center">
                 <div>
