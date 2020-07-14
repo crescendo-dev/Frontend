@@ -4,7 +4,7 @@ import moment, { Moment as MomentTypes } from 'moment';
 
 
 class Calender extends React.Component{
-  generate(){
+  generate = () => {
     const  today = moment();
     const startWeek = today.clone().startOf('month').week();
     const endWeek = today.clone().endOf('month').week() === 1 ? 53 : today.clone().endOf('month').week();
@@ -14,52 +14,54 @@ class Calender extends React.Component{
         <div className="row" key={week}>
           {
             Array(7).fill(0).map((n, i) => {
-              let current = today.clone().week(week).startOf('week').add(n + i, 'day')
+              let current = today.clone().week(week).startOf('week').add(n + i, 'day');
               let isSelected = today.format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
               let isGrayed = current.format('MM') === today.format('MM') ? '' : 'grayed';
               return (
                 <div className={`box  ${isSelected} ${isGrayed}`} key={i}>
                   <span className={`text`}>{current.format('D')}</span>
                 </div>
-              )
+              );
             })
           }
         </div>
       )
     }
   }
-  return render(){
-    <div className="Calendar">
-      <div className="head">
-        <span className="title">{moment().format('MMMM YYYY')}</span>
-      </div>
-      <div className="body">
-        <div className="row">
-          <div className="box">
-            <span className="text">SUN</span>
-          </div>
-          <div className="box">
-            <span className="text">MON</span>
-          </div>
-          <div className="box">
-            <span className="text">TUE</span>
-          </div>
-          <div className="box">
-            <span className="text">WED</span>
-          </div>
-          <div className="box">
-            <span className="text">THU</span>
-          </div>
-          <div className="box">
-            <span className="text">FRI</span>
-          </div>
-          <div className="box">
-            <span className="text">SAT</span>
-          </div>
+  render(){
+    return (
+      <div className="Calendar">
+        <div className="head">
+          <span className="title">{moment().format('MMMM YYYY')}</span>
         </div>
-        {generate()}
+        <div className="body">
+          <div className="row">
+            <div className="box">
+              <span className="text">SUN</span>
+            </div>
+            <div className="box">
+              <span className="text">MON</span>
+            </div>
+            <div className="box">
+              <span className="text">TUE</span>
+            </div>
+            <div className="box">
+              <span className="text">WED</span>
+            </div>
+            <div className="box">
+              <span className="text">THU</span>
+            </div>
+            <div className="box">
+              <span className="text">FRI</span>
+            </div>
+            <div className="box">
+              <span className="text">SAT</span>
+            </div>
+          </div>
+          {generate()}
+        </div>
       </div>
-    </div>
+    );
     }    
 }
 /*
